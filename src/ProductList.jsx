@@ -242,7 +242,7 @@ function ProductList({ onHomeClick }) {
 
     // Inside ProductList.jsx
     const handleAddToCart = (product) => {
-        dispatch(addItem(product)); // Added here to send the product to Redux
+        dispatch(addItem(product)); 
         setAddedToCart((prevState) => ({
             ...prevState,
             [product.name]: true,
