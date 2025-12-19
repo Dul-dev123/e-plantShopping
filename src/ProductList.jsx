@@ -4,8 +4,8 @@ import CartItem from './CartItem';
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
-    const [showPlants, setShowPlants] = useState(false); 
-    
+    const [showPlants, setShowPlants] = useState(false);
+
     // Task: Added local state to track which items are in the cart
     const [addedToCart, setAddedToCart] = useState({});
 
@@ -238,10 +238,11 @@ function ProductList({ onHomeClick }) {
         textDecoration: 'none',
     }
 
-    
+
+
+    // Inside ProductList.jsx
     const handleAddToCart = (product) => {
-        // dispatch(addItem(product)); // Note: Ensure 'dispatch' and 'addItem' are imported/defined via Redux
-        
+        dispatch(addItem(product)); // Added here to send the product to Redux
         setAddedToCart((prevState) => ({
             ...prevState,
             [product.name]: true,
@@ -260,8 +261,8 @@ function ProductList({ onHomeClick }) {
 
     const handlePlantsClick = (e) => {
         e.preventDefault();
-        setShowPlants(true); 
-        setShowCart(false); 
+        setShowPlants(true);
+        setShowCart(false);
     };
 
     const handleContinueShopping = (e) => {
@@ -285,7 +286,7 @@ function ProductList({ onHomeClick }) {
                 </div>
                 <div style={styleObjUl}>
                     <div> <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
-                    <div> 
+                    <div>
                         <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                             <h1 className='cart'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68">
@@ -309,10 +310,10 @@ function ProductList({ onHomeClick }) {
                             <div className="product-list">
                                 {category.plants.map((plant, plantIndex) => (
                                     <div className="product-card" key={plantIndex}>
-                                        <img 
-                                            className="product-image" 
-                                            src={plant.image} 
-                                            alt={plant.name} 
+                                        <img
+                                            className="product-image"
+                                            src={plant.image}
+                                            alt={plant.name}
                                         />
                                         <div className="product-title">{plant.name}</div>
                                         <div className="product-description">{plant.description}</div>
